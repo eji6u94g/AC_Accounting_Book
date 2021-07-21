@@ -8,12 +8,12 @@ const methodOverRide = require('method-override')
 const app = express()
 
 // self-definition setting
-const post = 3000
-const routes = require('./routes/index')
+const port = 3000
+const routes = require('./routes/index.js')
 
 //template setting
-app.engine('handlebars', exphbs({ defaultLayout: main }))
-app.set('view-engine', 'handlebars')
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 //body-parser setting
 app.use(express.urlencoded({ extended: true }))

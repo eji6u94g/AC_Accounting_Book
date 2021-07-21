@@ -1,0 +1,32 @@
+<form action="/" method="GET">
+  <label for="category">類別</label>
+  <select id="category" name='category'>
+    <option value="家居物業">家居物業</option>
+    <option value="交通出行">交通出行</option>
+    <option value="休閒娛樂">休閒娛樂</option>
+    <option value="餐飲食品">餐飲食品</option>
+    <option value="其他">其他</option>
+  </select>
+  <button type="submit">確認</button>
+</form>
+
+<p>總金額: <span>50000</span></p>
+
+{{!-- {{#each expensetrackers}} --}}
+<div>
+  <div class="d-flex flex-row align-items-center">
+    <span>icon</span>
+    <div>
+      <span>午餐</span>
+      <span>2021/07/21</span>
+    </div>
+    <span>60</span>
+    <a href="/expensetrackers/edit" class="btn">修改</a>
+    <form action="/expensetrackers/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+      <button class="btn" type="button">刪除</button>
+    </form>
+  </div>
+</div>
+{{!-- {{/each}} --}}
+
+<a href="/expensetrackers/new" class="btn">新增</a>
