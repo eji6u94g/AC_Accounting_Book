@@ -25,6 +25,9 @@ app.use(methodOverRide('_method'))
 //routes setting
 app.use(routes)
 
+//static file setting
+app.use(express.static('public'))
+
 app.listen(port, () => {
   console.log(`App is running on http://localhost:${port}`)
 })

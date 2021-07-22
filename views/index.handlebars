@@ -12,21 +12,21 @@
 
 <p>總金額: <span>50000</span></p>
 
-{{!-- {{#each expensetrackers}} --}}
 <div>
+  {{#each record}}
   <div class="d-flex flex-row align-items-center">
-    <span>icon</span>
+    <i class='{{this.iconClassName}}'></i>
     <div>
-      <span>午餐</span>
-      <span>2021/07/21</span>
+      <span>{{this.name}}</span>
+      <span>{{this.date}}</span>
     </div>
-    <span>60</span>
+    <span>{{this.amount}}</span>
     <a href="/expensetrackers/edit" class="btn">修改</a>
     <form action="/expensetrackers/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
       <button class="btn" type="button">刪除</button>
     </form>
   </div>
+  {{/each}}
 </div>
-{{!-- {{/each}} --}}
 
 <a href="/expensetrackers/new" class="btn">新增</a>
