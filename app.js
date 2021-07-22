@@ -10,6 +10,7 @@ const app = express()
 // self-definition setting
 const port = 3000
 const routes = require('./routes/index.js')
+require('./config/mongoose')
 
 //template setting
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
