@@ -59,12 +59,13 @@ router.put('/:id/', (req, res) => {
 //filter
 router.get('/filter', (req, res) => {
   const filteredCategory = req.query.category
-
   Promise.all([recordData.find().lean(), categoryData.find().lean()])
     .then(results => {
       let [record, categories] = results
       let totalAmount = 0
-      record = record.filter(record => getFilteredRecords(record, filteredCategory))
+      if (filteredCategory !== '全部') {
+        record = record.filter(record => getFilteredRecords(record, filteredCategory))
+      }
       record.forEach(obj => {
         obj.date = getDateCasting(obj.date)
         obj.iconClassName = getIconClassName(obj.category, categories)

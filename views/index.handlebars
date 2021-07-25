@@ -1,6 +1,7 @@
 <form action="/expensetrackers/filter" method="GET">
   <label for="category">類別</label>
   <select id="category" name='category'>
+    <option value="全部" {{#if (isCategorySelected filteredCategory '全部' )}} selected{{/if}}>全部</option>
     <option value="家居物業" {{#if (isCategorySelected filteredCategory '家居物業' )}} selected{{/if}}>家居物業</option>
     <option value="交通出行" {{#if (isCategorySelected filteredCategory '交通出行' )}} selected{{/if}}>交通出行</option>
     <option value="休閒娛樂" {{#if (isCategorySelected filteredCategory '休閒娛樂' )}} selected{{/if}}>休閒娛樂</option>
