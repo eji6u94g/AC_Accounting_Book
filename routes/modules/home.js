@@ -8,11 +8,13 @@ router.get('/', (req, res) => {
   Promise.all([recordData.find().lean(), categoryData.find().lean()])
     .then(results => {
       const [record, categories] = results
+      let totalAmount = 0
       record.forEach(obj => {
         obj.date = getDateCasting(obj.date)
         obj.iconClassName = getIconClassName(obj.category, categories)
+        totalAmount += obj.amount
       })
-      res.render('index', { record })
+      res.render('index', { record, totalAmount })
     })
 })
 
