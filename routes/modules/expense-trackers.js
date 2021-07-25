@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const recordData = require('../../models/record.js')
 const categoryData = require('../../models/category.js')
-const { getDateCasting } = require('../../public/javascripts/function.js')
+const { getDateCasting, getIconClassName, getFilteredRecords } = require('../../public/javascripts/function.js')
 
 //create a new item
 router.get('/new', (req, res) => {
@@ -36,7 +36,41 @@ router.get('/:id/edit', (req, res) => {
     .then(results => {
       const [record, categories] = results
       record.date = getDateCasting(record.date)
-      res.render('edit', { record, categories })
+      res.render('edit', { record, categories, id })
+    })
+    .catch(error => console.log(error))
+})
+
+router.put('/:id/', (req, res) => {
+  const id = req.params.id
+  const { name, date, category, amount } = req.body
+  recordData.findById(id)
+    .then(record => {
+      record.name = name
+      record.date = date
+      record.category = category
+      record.amount = amount
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+//filter
+router.get('/filter', (req, res) => {
+  const filteredCategory = req.query.category
+
+  Promise.all([recordData.find().lean(), categoryData.find().lean()])
+    .then(results => {
+      let [record, categories] = results
+      let totalAmount = 0
+      record = record.filter(record => getFilteredRecords(record, filteredCategory))
+      record.forEach(obj => {
+        obj.date = getDateCasting(obj.date)
+        obj.iconClassName = getIconClassName(obj.category, categories)
+        totalAmount += obj.amount
+      })
+      res.render('index', { record, totalAmount, filteredCategory })
     })
     .catch(error => console.log(error))
 })

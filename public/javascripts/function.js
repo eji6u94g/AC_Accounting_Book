@@ -15,6 +15,9 @@ const functions = {
   getIconClassName: function (recordCategory, categories) {
     const category = categories.find(category => category.name === recordCategory)
     return category.iconClass
+  },
+  getFilteredRecords: function (record, fileredCategory) {
+    return record.category === fileredCategory
   }
 }
 
