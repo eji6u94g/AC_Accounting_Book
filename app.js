@@ -13,7 +13,14 @@ const routes = require('./routes/index.js')
 require('./config/mongoose')
 
 //template setting
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    isCategorySelected: function (recordCategoryValue, category) {
+      return recordCategoryValue === category ? true : false
+    }
+  }
+}))
 app.set('view engine', 'handlebars')
 
 //body-parser setting

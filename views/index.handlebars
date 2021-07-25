@@ -21,9 +21,9 @@
       <span>{{this.date}}</span>
     </div>
     <span>{{this.amount}}</span>
-    <a href="/expensetrackers/edit" class="btn">修改</a>
+    <a href="/expensetrackers/{{this._id}}/edit" class="btn">修改</a>
     <form action="/expensetrackers/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-      <button class="btn" type="button">刪除</button>
+      <button class="btn" type="submit">刪除</button>
     </form>
   </div>
   {{/each}}
