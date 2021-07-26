@@ -40,3 +40,8 @@
 .expense-container {
   background-color: #F0F0F0;
 }
+
+.button-save {
+  width: 10rem;
+  margin-left: 94.85px;
+}

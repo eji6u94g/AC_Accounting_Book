@@ -1,6 +1,6 @@
 <div class='w-60 center outter-container'>
-  <form action="/expensetrackers/filter" method="GET">
-    <select id="category" name='category'>
+  <form action="/expensetrackers/filter" method="GET" class='my-3'>
+    <select id="category" name='category' class='form-select form-select-sm' onchange="this.form.submit()">
       <option value="類別" {{#if (isCategorySelected filteredCategory '類別' )}} selected{{/if}}>類別</option>
       <option value="家居物業" {{#if (isCategorySelected filteredCategory '家居物業' )}} selected{{/if}}>家居物業</option>
       <option value="交通出行" {{#if (isCategorySelected filteredCategory '交通出行' )}} selected{{/if}}>交通出行</option>
@@ -8,7 +8,6 @@
       <option value="餐飲食品" {{#if (isCategorySelected filteredCategory '餐飲食品' )}} selected{{/if}}>餐飲食品</option>
       <option value="其他" {{#if (isCategorySelected filteredCategory '其他' )}} selected{{/if}}>其他</option>
     </select>
-    <button type="submit" class='btn btn-secondary btn-sm'>確認</button>
   </form>
 
   <div class='d-flex flex-row justify-content-between align-items-start w-60'>
