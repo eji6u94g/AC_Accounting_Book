@@ -63,7 +63,7 @@ router.get('/filter', (req, res) => {
     .then(results => {
       let [record, categories] = results
       let totalAmount = 0
-      if (filteredCategory !== '全部') {
+      if (filteredCategory !== '類別') {
         record = record.filter(record => getFilteredRecords(record, filteredCategory))
       }
       record.forEach(obj => {

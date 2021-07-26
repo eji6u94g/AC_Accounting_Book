@@ -1,0 +1,42 @@
+.total-amount {
+  color: rgb(255, 146, 0);
+  font-size: 5rem;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-30 {
+ width: 30%;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.outter-container {
+  min-width: 550px;
+}
+
+.icon {
+  font-size: 2rem;
+  color: rgb(122, 210, 255);
+}
+
+.icon-container {
+  width: 3rem;
+  height: 2rem;
+}
+
+.button-new {
+  background-color: #EA7500;
+  color: white;
+  width: 10rem;
+  margin-top: 2rem;
+  margin-left: 20%;
+}
+
+.expense-container {
+  background-color: #F0F0F0;
+}

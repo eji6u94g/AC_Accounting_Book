@@ -1,33 +1,45 @@
-<form action="/expensetrackers/filter" method="GET">
-  <label for="category">類別</label>
-  <select id="category" name='category'>
-    <option value="全部" {{#if (isCategorySelected filteredCategory '全部' )}} selected{{/if}}>全部</option>
-    <option value="家居物業" {{#if (isCategorySelected filteredCategory '家居物業' )}} selected{{/if}}>家居物業</option>
-    <option value="交通出行" {{#if (isCategorySelected filteredCategory '交通出行' )}} selected{{/if}}>交通出行</option>
-    <option value="休閒娛樂" {{#if (isCategorySelected filteredCategory '休閒娛樂' )}} selected{{/if}}>休閒娛樂</option>
-    <option value="餐飲食品" {{#if (isCategorySelected filteredCategory '餐飲食品' )}} selected{{/if}}>餐飲食品</option>
-    <option value="其他" {{#if (isCategorySelected filteredCategory '其他' )}} selected{{/if}}>其他</option>
-  </select>
-  <button type="submit">確認</button>
-</form>
+<div class='w-60 center outter-container'>
+  <form action="/expensetrackers/filter" method="GET">
+    <select id="category" name='category'>
+      <option value="類別" {{#if (isCategorySelected filteredCategory '類別' )}} selected{{/if}}>類別</option>
+      <option value="家居物業" {{#if (isCategorySelected filteredCategory '家居物業' )}} selected{{/if}}>家居物業</option>
+      <option value="交通出行" {{#if (isCategorySelected filteredCategory '交通出行' )}} selected{{/if}}>交通出行</option>
+      <option value="休閒娛樂" {{#if (isCategorySelected filteredCategory '休閒娛樂' )}} selected{{/if}}>休閒娛樂</option>
+      <option value="餐飲食品" {{#if (isCategorySelected filteredCategory '餐飲食品' )}} selected{{/if}}>餐飲食品</option>
+      <option value="其他" {{#if (isCategorySelected filteredCategory '其他' )}} selected{{/if}}>其他</option>
+    </select>
+    <button type="submit" class='btn btn-secondary btn-sm'>確認</button>
+  </form>
 
-<p>總金額: <span>{{totalAmount}}</span></p>
+  <div class='d-flex flex-row justify-content-between align-items-start w-60'>
+    <p class='me-3' style="display: inline;">總金額:</p>
+    <p class='total-amount' style="display: inline;">{{totalAmount}}</p>
+  </div>
 
-<div>
   {{#each record}}
-  <div class="d-flex flex-row align-items-center">
-    <i class='{{this.iconClassName}}'></i>
-    <div>
-      <span>{{this.name}}</span>
-      <span>{{this.date}}</span>
+  <div class="d-flex flex-row justify-content-between align-items-center mt-1">
+    <div class='d-flex flex-row justify-content-between align-items-center w-60 expense-container'>
+      <div class='d-flex flex-row me-5'>
+        <div class='icon-container d-flex justify-content-end'>
+          <i class='{{this.iconClassName}} icon'></i>
+        </div>
+        <div class='d-flex flex-column ms-2'>
+          <span>{{this.name}}</span>
+          <span>{{this.date}}</span>
+        </div>
+      </div>
+      <span class='me-4'>{{this.amount}}</span>
     </div>
-    <span>{{this.amount}}</span>
-    <a href="/expensetrackers/{{this._id}}/edit" class="btn">修改</a>
-    <form action="/expensetrackers/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-      <button class="btn" type="submit">刪除</button>
-    </form>
+
+    <div>
+      <a href="/expensetrackers/{{this._id}}/edit" class="btn">修改</a>
+      <form action="/expensetrackers/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+        <button class="btn" type="submit">刪除</button>
+      </form>
+    </div>
   </div>
   {{/each}}
-</div>
 
-<a href="/expensetrackers/new" class="btn">新增</a>
+
+  <a href="/expensetrackers/new" class="btn btn-outline-dark button-new">新增支出</a>
+</div>
