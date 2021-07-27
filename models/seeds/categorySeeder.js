@@ -9,5 +9,11 @@ dbConnectionStatus.once('open', () => {
     { name: '餐飲食品', iconClass: 'fas fa-utensils' },
     { name: '其他', iconClass: 'fas fa-pen' }
   )
-  console.log('Category seed data is created.')
+    .then(() => {
+      console.log('Record seed data is created.')
+      return dbConnectionStatus.close()
+    })
+    .then(() => {
+      console.log('database connection is closed')
+    })
 })

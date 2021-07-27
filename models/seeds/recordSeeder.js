@@ -9,5 +9,13 @@ dbConnectionStatus.once('open', () => {
     { name: '電影:驚奇隊長', category: '休閒娛樂', date: '2021/5/1', amount: '220' },
     { name: '租金', category: '家居物業', date: '2021/5/2', amount: '25000' }
   )
-  console.log('Record seed data is created.')
+    .then(() => {
+      console.log('Record seed data is created.')
+      return dbConnectionStatus.close()
+    })
+    .then(() => {
+      console.log('database connection is closed')
+    })
+
+
 })
