@@ -8,7 +8,7 @@ const methodOverRide = require('method-override')
 const app = express()
 
 // self-definition setting
-const port = 3000
+const port = process.env.PORT || 3000
 const routes = require('./routes/index.js')
 require('./config/mongoose')
 
